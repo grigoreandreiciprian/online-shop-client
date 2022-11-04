@@ -1,0 +1,46 @@
+.intro{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // border: 2px solid red;
+    width: 50%;
+    margin: 5rem auto;
+
+    h2{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    h1{
+        font-size: 40px;
+        font-weight: bolder;
+    }
+
+    p{
+        text-align: center;
+        font-size: 18px;
+        margin-top: 15px;
+        max-width: 700px;
+        color: gray;
+    }
+
+    .btn{
+        padding: 10px 30px;
+        background-color: red;
+        margin-top: 20px;
+        font-size: 15px;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 20px;
+        transition: .3s all;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .btn:hover{
+        background-color: black;
+    }
+}

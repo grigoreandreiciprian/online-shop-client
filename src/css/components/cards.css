@@ -1,0 +1,9 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.cards .card {
+  color: red;
+}
+
+/*# sourceMappingURL=cards.css.map */
