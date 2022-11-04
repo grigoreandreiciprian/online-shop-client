@@ -1,3 +1,4 @@
+import Product from "./models/Product";
 import ResponseImpl from "./models/Response";
 
 
@@ -20,5 +21,10 @@ export default class Data{
     }
 
 
-  getProducts = async ():Promise<ResponseImpl>
+  getProducts = async ():Promise<ResponseImpl<Product[]>>=>{
+
+    const response = await this.api("/products", "GET", null, "")
+
+    return response.json()
+  }
 }
