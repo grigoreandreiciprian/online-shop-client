@@ -27,17 +27,17 @@ const Carousel = () => {
         ></button>
       </div>
       <div class="carousel-inner relative w-full overflow-hidden">
-        <div class="carousel-item active float-left w-full">
+        <div class="carousel-item carouselImg active float-left w-full">
           <img
             src="https://mmasport.7uptheme.net/wp-content/uploads/2019/02/slider01.jpg"
-            class="block w-full h-[45rem]"
+            class="carouselImg"
             alt="Wild Landscape"
           />
 
-          <div class="carousel-caption2 text-4xl md:flex justify-center content-center flex-col h-full absolute text-center text-6xl uppercase  font-bold  ">
+          <div class="carousel-caption2 carousel ">
             <h1 className="m-4">Run fast , run slow</h1>
             <h1>Run far, run close</h1>
-            <div className="flex justify-center content-center w-full ">
+            <div className="imgContainer">
               <img src={run} alt=""></img>
             </div>
           </div>
@@ -45,17 +45,15 @@ const Carousel = () => {
         <div class="carousel-item float-left w-full">
           <img
             src="https://mmasport.7uptheme.net/wp-content/uploads/2019/02/slider02.jpg"
-            class="block w-full h-[45rem]"
+            class="carouselImg"
             alt="Camera"
           />
 
-          <div class="carousel-caption2 hidden md:flex justify-center content-start flex-col h-full absolute text-center uppercase  font-bold  ">
-            <div className="flex flex-col justify-start content-center  w-[40%]">
-              <h1 className="m-2 text-4xl ">New collection</h1>
-              <h1 className="text-6xl m-2">Join the the revolution</h1>
-              <button className="p-[10px] rounded-lg bg-red-500 w-[30%] my-5 m-auto ">
-                Shop now
-              </button>
+          <div class="carousel-caption2 carousel ">
+            <div className="sliderContainer2">
+              <h1 className="title1 ">New collection</h1>
+              <h1 className="title2">Join the the revolution</h1>
+              <button className="introBtn">Shop now</button>
             </div>
           </div>
         </div>

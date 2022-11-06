@@ -1,8 +1,28 @@
 .productCards {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 40px;
+  width: 80%;
+  margin: auto;
+}
+
+@media (min-width: 725px) {
+  .productCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+    width: 80%;
+    margin: auto;
+  }
+}
+@media (min-width: 1250px) {
+  .productCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+    width: 80%;
+    margin: auto;
+  }
 }
 
 /*# sourceMappingURL=productCards.css.map */

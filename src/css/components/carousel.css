@@ -1,0 +1,85 @@
+.carousel {
+  font-size: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: absolute;
+}
+.carousel h1 {
+  margin: 0px;
+}
+.carousel .imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  max-width: 570px;
+}
+.carousel .sliderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.carousel .sliderContainer2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
+  padding: 0px;
+}
+.carousel .sliderContainer h1 {
+  font-size: 1.25rem;
+}
+.carousel .sliderContainer2 h1 {
+  font-size: 1rem;
+}
+.carousel .introBtn {
+  padding: 5px 10px;
+  background-color: red;
+  font-size: 1rem;
+  margin: auto;
+  margin: 0.5rem 0px;
+  border-radius: 0.5rem;
+  width: 50%;
+}
+
+@media (min-width: 500px) {
+  .carousel .sliderContainer2 h1 {
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 1000px) {
+  .carousel {
+    font-size: 3.75rem;
+  }
+  .carousel .sliderContainer2 h1 {
+    font-size: 2.25rem;
+  }
+  .carousel .introBtn {
+    padding: 5px 10px;
+    background-color: red;
+    font-size: 1rem;
+    margin: auto;
+    margin: 0.7rem;
+    border-radius: 0.5rem;
+    width: 40%;
+    max-width: 220px;
+    font-size: 1.75rem;
+  }
+  .carousel .sliderContainer2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 5rem auto;
+    width: 70%;
+  }
+}
+
+/*# sourceMappingURL=carousel.css.map */
