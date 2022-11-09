@@ -5,12 +5,15 @@ import ProductCard from "./ProductCard";
 import Product from "../../../models/Product";
 
 export const ProductCards = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(Object);
 
   const Api = new Data();
 
   const getProducts = async () => {
     const products = await Api.getProducts();
+
+    setProducts(products)
+
 
   };
 
@@ -20,8 +23,18 @@ export const ProductCards = () => {
 
   return (
     <div className="productCards">
+       
+       {
+        products.length>0?(
+          products.map( (e:Product) =>{
+            return  <ProductCard key={e.id}  product={e} />
+          })
+        )
 
-      <ProductCard />
+        :
+        <p>We dont have products</p>
+       }
+     
     </div>
   );
 };
