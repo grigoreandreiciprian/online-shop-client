@@ -7,6 +7,5 @@ export default interface Costumer {
     fullName: string
     billingAddress: string
     country: string
-    phone: bigint
-    picture: Blob
+    phone: string
 }

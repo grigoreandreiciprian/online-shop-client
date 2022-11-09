@@ -3,9 +3,11 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
 
     .registerBox{
       width: 100%;
+      max-width: 500px;
       margin: auto;
       display: flex;
       flex: 1 1 0%;
@@ -21,17 +23,52 @@
         padding: 0.75rem 0px;
         border-radius: 0.25rem;
         background-color: green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
         color: white;
     }
 
     .registerBtn:hover{
         background-color: darkgreen;
-        outline: 2px solid transparent;
-        margin: 0.25rem 0px;
+        
     }
 
-    .registerBtn:focus{
 
+    .registerInputBox{
+        background-color: white;
+        padding: 2rem 1.5rem;
+        border-radius: .25rem;
+        width: 100%;
+        color: black;
+    }
+
+    .policyBox{
+        font-size: .9rem;
+        line-height: 1.25rem;
+        margin-top: 1rem;
+        color: darkgray;
+        text-align: center;
+    }
+
+    .policyBox a{
+        margin: 0px 4px;
+    }
+
+    .accBox{
+        margin-top: 1.5rem;
+        color: black;
+    }
+
+    .accBox a{
+        margin-left: 5px;
+    }
+
+    .accBox a:hover{
+        color: blue;
+        font-size: 1rem;
+        cursor: pointer;
     }
 }
 
@@ -40,7 +77,7 @@
      .registerContainer{
 
         .registerBox{
-            max-width: 640px;
+            max-width: 500px;
         }
      }
 }
@@ -49,7 +86,7 @@
 @media(min-width:768px){
     .registerContainer{
         .registerBox{
-            max-width: 768px;
+            max-width: 500px;
         }
     }
 }

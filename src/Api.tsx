@@ -1,3 +1,4 @@
+import Costumer from "./models/Costumer";
 import Product from "./models/Product";
 import ResponseImpl from "./models/Response";
 
@@ -26,5 +27,12 @@ export default class Data{
     const response = await this.api("/products", "GET", null, "")
 
     return response.json()
+  }
+
+  createAcc= async(user:Costumer)=>{
+       
+    const response = await this.api("/users", "POST",user,"")
+    
+    return response
   }
 }
