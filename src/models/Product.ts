@@ -1,5 +1,6 @@
-
+import PictureData from "./PictureData";
 export default interface Product {
+
     id?: number | null;
     name: String;
     price: Number;
@@ -7,5 +8,5 @@ export default interface Product {
     category: String;
     create_date: String;
     stock: number;
-    picture: Blob
+    picture: PictureData
 }

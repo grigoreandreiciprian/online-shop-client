@@ -415,8 +415,12 @@ template {
   width: 80%;
   margin: auto;
 }
+.productCards .productCard {
+  max-width: 45rem;
+  margin: 0px auto;
+}
 
-@media (min-width: 725px) {
+@media (min-width: 720px) {
   .productCards {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -521,6 +525,46 @@ template {
   display: block;
   width: 100%;
   min-width: 100%;
+}
+
+.registerContainer {
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.registerContainer .registerBox {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 0.5rem;
+}
+.registerContainer .registerBtn {
+  width: 100%;
+  text-align: center;
+  padding: 0.75rem 0px;
+  border-radius: 0.25rem;
+  background-color: green;
+  color: white;
+}
+.registerContainer .registerBtn:hover {
+  background-color: darkgreen;
+  outline: 2px solid transparent;
+  margin: 0.25rem 0px;
+}
+@media (min-width: 640px) {
+  .registerContainer .registerBox {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .registerContainer .registerBox {
+    max-width: 768px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
