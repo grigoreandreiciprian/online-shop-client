@@ -51,6 +51,9 @@
 .registerContainer .accBox {
   margin-top: 1.5rem;
   color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .registerContainer .accBox a {
   margin-left: 5px;
