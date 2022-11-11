@@ -5,7 +5,10 @@ export default interface Costumer {
     email: string
     password: string
     fullName: string
-    billingAddress: string
+    streetAdress: string
+    province: string
+    city: string
+    postalCode: number
     country: string
     phone: string
 }
