@@ -11,12 +11,17 @@ const RegisterMain:React.FC = () => {
     const[email,setEmail] = useState(String)
     const[password,setPassword] = useState(String)
     const[confirmPass,setConfirm]= useState(String)
-    const[billingAddress,setAdress]=useState(String)
+    const[province,setProvince] = useState(String)
+    const[postalCode,setPostal] = useState(Number)
+    const[city,setCity] = useState(String)
+    const[streetAdress,setAdress]=useState(String)
     const[country,setCountry] = useState(String)
     const[phone,setPhone]= useState(String)
 
+    console.log(fullName,email,password,confirmPass,streetAdress,country,phone,province,city,postalCode)
 
-    const handleChanger= (fullName:string,email:string,password:string,confirmPass:string,billingAdress:string,country:string,phone:string) =>{
+
+    const handleChanger= (fullName:string,email:string,password:string,confirmPass:string,billingAdress:string,country:string,phone:string, province:string,city:string,postalCode:number) =>{
           
         setFullName(fullName);
         setEmail(email);
@@ -25,11 +30,15 @@ const RegisterMain:React.FC = () => {
         setAdress(billingAdress)
         setCountry(country)
         setPhone(phone)
+        setProvince(province)
+        setCity(city)
+        setPostal(postalCode)
+
     }
 
     const createAccount = async () =>{
          
-        const response= await api.createAcc({fullName,email,password,billingAddress,country,phone})
+        const response= await api.createAcc({fullName,email,password,streetAdress,country,phone,province,city,postalCode})
 
         if(response.status == 200){
             alert("Account created succesfully")

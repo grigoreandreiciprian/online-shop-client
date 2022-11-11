@@ -589,6 +589,20 @@ template {
   font-size: 1rem;
   cursor: pointer;
 }
+.registerContainer .adress {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.registerContainer .adress input {
+  width: 45%;
+  margin: 0.5rem;
+}
+.registerContainer .adress select {
+  width: 45%;
+  margin: 0.5rem;
+}
 
 @media (min-width: 640px) {
   .registerContainer .registerBox {

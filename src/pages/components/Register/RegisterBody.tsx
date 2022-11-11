@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 
 interface Functions{
-    handleChanger:  (fullName:string,email:string,password:string,confirmPass:string,billingAdress:string,country:string,phone:string) => void
+    handleChanger:  (fullName:string,email:string,password:string,confirmPass:string,billingAdress:string,country:string,phone:string,city:string,province:string,postalCode:number) => void
 
     createAccount: () => void
 }
@@ -14,8 +14,11 @@ interface Functions{
     const[email,setEmail] = useState(String)
     const[password,setPassword] = useState(String)
     const[confirmPass,setConfirmPass] = useState(String)
-    const[billingAdress,setAdress]=useState(String)
+    const[streetAdress,setAdress]=useState(String)
     const[country,setCountry] = useState(String)
+    const[province,setProvince] = useState(String)
+    const[postalCode,setPostal] = useState(Number)
+    const[city,setCity] = useState(String)
     const[phone,setPhone]= useState(String)
 
     const onChange = (e: React.FormEvent<HTMLDivElement>) =>{
@@ -36,13 +39,21 @@ interface Functions{
             setPhone(obj.value)
         }else if(obj.classList.contains("country")){
             setCountry(obj.value)
+        }else if(obj.classList.contains("province")){
+            setProvince(obj.value)
+        }else if(obj.classList.contains("city")){
+            setCity(obj.value)
+        }else if(obj.classList.contains("postalCode")){
+            setPostal (+obj.value)
         }
+
+      
     }
 
     useEffect(()=>{
-        handleChanger(fullName,email,password,confirmPass,billingAdress,country,phone)
+        handleChanger(fullName,email,password,confirmPass,streetAdress,country,phone,province,city,postalCode)
 
-    },[fullName,email,password,confirmPass,billingAdress,country,phone])
+    },[fullName,email,password,confirmPass,streetAdress,country,phone,province,city,postalCode])
   return (
     <div className="registerInputBox" onChange={onChange}>
                     <h1 className="mb-8 text-3xl text-center">Sign up</h1>
@@ -69,17 +80,7 @@ interface Functions{
                         name="confirm_password"
                         placeholder="Confirm Password" />
 
-                   <input 
-                        type="text"
-                        className="adress block border border-grey-light w-full p-3 rounded mb-4"
-                        name="adress"
-                        placeholder="Billing Adress" />
 
-                     <input 
-                        type="text"
-                        className="country block border border-grey-light w-full p-3 rounded mb-4"
-                        name="country"
-                        placeholder="Country" />
 
                     <input 
                         type="number"
@@ -87,6 +88,57 @@ interface Functions{
                         name="phone"
                         placeholder="Phone Number" />
 
+
+
+                <input 
+                        type="text"
+                        className="adress block border border-grey-light w-full p-3 rounded mb-4"
+                        name="adress"
+                        placeholder="Street adress" />
+
+
+                        
+
+                    <div className='adress'>
+
+                    <select   className="country block border border-grey-light w-full p-3 rounded mb-4" defaultValue="Country">
+
+                    <option value="" disabled>
+                            Chose country
+                        </option>
+                        <option>Romania</option>
+                        <option>Bulgaria</option>
+                        <option>Hungary</option>
+                        <option>Moldova</option>
+                        <option>Ucraine</option>
+                    </select>
+                        
+                       
+                        
+                        
+                    
+
+                    <input 
+                        type="text"
+                        className="province block border border-grey-light w-full p-3 rounded mb-4"
+                        name="country"
+                        placeholder="State / Province" />
+
+                   <input 
+                        type="text"
+                        className="city block border border-grey-light w-full p-3 rounded mb-4"
+                        name="country"
+                        placeholder="City" />
+
+               <input 
+                        type="text"
+                        className="postalCode block border border-grey-light w-full p-3 rounded mb-4"
+                        name="country"
+                        placeholder="Zip / Postal code" />
+
+
+
+                   </div>
                     <button
                         type="submit"
                         className="registerBtn" onClick={createAccount}>Create Account</button>
