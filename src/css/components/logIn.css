@@ -1,0 +1,74 @@
+.logInContainer {
+  height: 100vh;
+  background-color: royalblue;
+}
+.logInContainer .logInBox {
+  width: 100%;
+  padding: 3rem 1.5rem;
+  height: 100%;
+}
+.logInContainer .logImg {
+  padding-bottom: 3rem;
+  max-width: 400px;
+}
+.logInContainer .log img {
+  max-width: 400px;
+}
+.logInContainer .logInput {
+  display: block;
+  width: 100%;
+  padding: 0px 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: black;
+  background-color: white;
+}
+.logInContainer .logInput:focus {
+  border: 2px solid blue;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  .logInContainer .logInBox {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .logInContainer .logInBox {
+    max-width: 768px;
+  }
+  .logInContainer .logImg {
+    width: 66%;
+    margin-bottom: 0px;
+  }
+  .logInContainer .logFormBox {
+    width: 66%;
+  }
+}
+@media (min-width: 1024px) {
+  .logInContainer .logInBox {
+    max-width: 1024px;
+  }
+  .logInContainer .logImg {
+    width: 50%;
+    margin-bottom: 3rem;
+  }
+  .logInContainer .logFormBox {
+    margin-left: 5rem;
+    width: 40%;
+  }
+}
+@media (min-width: 1280px) {
+  .logInContainer .logInBox {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .logInContainer .logInBox {
+    max-width: 1536px;
+  }
+}
+
+/*# sourceMappingURL=logIn.css.map */

@@ -4,6 +4,8 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
+  display: grid;
+  position: relative;
 }
 .registerContainer .registerBox {
   width: 100%;
@@ -77,6 +79,24 @@
   width: 45%;
   margin: 0.5rem;
 }
+.registerContainer .alerts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 50%;
+  min-width: 484px;
+  margin: auto;
+  right: 0.5rem;
+  animation: alert linear 0.7s 1;
+}
+.registerContainer .alertMsg {
+  margin: 0.25rem 0px;
+  width: 100%;
+}
+.registerContainer .none {
+  display: none;
+}
 
 @media (min-width: 640px) {
   .registerContainer .registerBox {
@@ -86,6 +106,33 @@
 @media (min-width: 768px) {
   .registerContainer .registerBox {
     max-width: 500px;
+  }
+}
+@media (min-width: 1000px) {
+  .registerContainer .alerts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 20%;
+    position: absolute;
+    top: 15%;
+    right: 0.5rem;
+    animation: alert linear 0.7s 1;
+  }
+  .registerContainer .alertMsg {
+    margin: 0.25rem 0px;
+    width: 100%;
+  }
+}
+@keyframes alert {
+  0% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
   }
 }
 

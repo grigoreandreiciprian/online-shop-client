@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react'
 
 
 interface Functions{
-    handleChanger:  (fullName:string,email:string,password:string,confirmPass:string,billingAdress:string,country:string,phone:string,city:string,province:string,postalCode:number) => void
+    handleChanger:  (fullName:string,email:string,password:string,confirmPass:string,billingAdress:string,country:string,phone:string,city:string,province:string,postalCode:string) => void
+
+    err:Array<String>
 
     createAccount: () => void
 }
 
- const RegisterBody:React.FC <Functions> = ({handleChanger,createAccount}:Functions) => {
+ const RegisterBody:React.FC <Functions> = ({handleChanger,createAccount,err}:Functions) => {
   
     const[fullName,setFullName] = useState(String)
     const[email,setEmail] = useState(String)
@@ -17,9 +19,12 @@ interface Functions{
     const[streetAdress,setAdress]=useState(String)
     const[country,setCountry] = useState(String)
     const[province,setProvince] = useState(String)
-    const[postalCode,setPostal] = useState(Number)
+    const[postalCode,setPostal] = useState(String)
     const[city,setCity] = useState(String)
     const[phone,setPhone]= useState(String)
+
+
+    console.log(err)
 
     const onChange = (e: React.FormEvent<HTMLDivElement>) =>{
 
@@ -44,7 +49,7 @@ interface Functions{
         }else if(obj.classList.contains("city")){
             setCity(obj.value)
         }else if(obj.classList.contains("postalCode")){
-            setPostal (+obj.value)
+            setPostal (obj.value)
         }
 
       
@@ -55,6 +60,11 @@ interface Functions{
 
     },[fullName,email,password,confirmPass,streetAdress,country,phone,province,city,postalCode])
   return (
+
+    <>
+
+
+  
     <div className="registerInputBox" onChange={onChange}>
                     <h1 className="mb-8 text-3xl text-center">Sign up</h1>
                     <input 
@@ -152,8 +162,19 @@ interface Functions{
                               Privacy Policy
                         </a>
                     </div>
+
+                    
+            <div className="accBox">
+                    Already have an account? 
+                    <a className="border-b border-blue text-blue">
+                        Log in
+                    </a>.
                 </div>
+                </div>
+                </>
   )
+
+  
 }
 
 
