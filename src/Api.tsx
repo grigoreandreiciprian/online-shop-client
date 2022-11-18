@@ -35,4 +35,10 @@ export default class Data{
     
     return response
   }
+
+  logInn = async(user:Costumer) =>{
+    const response = await this.api("/users/log", "POST",user,"")
+
+    return response
+  }
 }

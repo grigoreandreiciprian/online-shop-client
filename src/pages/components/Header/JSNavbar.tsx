@@ -1,8 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import logoBlack from "../../../imgs/logo-black.png";
 
 const JSNavbar = () => {
+
+  const navigate= useNavigate()
+
+  const acc = () =>{
+    navigate("/LogIn")
+  }
   return (
     <div className="flex flex-wrap place-items-top h-20 ">
       <section className="relative mx-auto">
@@ -72,7 +79,7 @@ const JSNavbar = () => {
                 </span>
               </a>
               {/* <!-- Sign In / Register      --> */}
-              <a className="flex items-center hover:text-red-500" href="#">
+              <a className="flex items-center hover:text-red-500" href="#" onClick={acc}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 hover:text-red-500"

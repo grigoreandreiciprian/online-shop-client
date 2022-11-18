@@ -6,7 +6,7 @@ import JSNavbar from './components/Header/JSNavbar'
  const LogIn:React.FC = () => {
   return (
     <>
-     <JSNavbar />
+     {/* <JSNavbar /> */}
      <LogInMain />
     </>
   )

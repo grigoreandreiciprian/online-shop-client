@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 
-import "tw-elements";
 import { Alerts } from "../../../Context/Alert";
 import run from "../../../imgs/just-run.png";
 
 const Carousel = () => {
   const { alert, setAlert } = useContext(Alerts);
+
+  const closeAlert = () => {
+    setAlert("");
+  };
 
   return (
     <div
@@ -30,21 +33,28 @@ const Carousel = () => {
         ></button>
       </div>
 
-      {alert.length > 0 ? (
-        alert.map((e) => {
-          return (
-            <div
-              className="alertMsg bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative w-[20%]"
-              role="alert"
-            >
-              <span className="block sm:inline">{e}</span>
-              <span className="absolute top-0 bottom-0 right-0 px-4 py-3"></span>
-            </div>
-          );
-        })
-      ) : (
-        <p className="none"></p>
-      )}
+      <div className="alerts">
+        {alert.length > 0 ? (
+          alert.map((e) => {
+            return (
+              <div
+                className="alertMsg bg-green-100 border border-red-400 text-green-700 px-4 py-3 rounded relative w-[20%]"
+                role="alert"
+              >
+                <span className="block sm:inline">{e}</span>
+                <span
+                  className="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer"
+                  onClick={closeAlert}
+                >
+                  x
+                </span>
+              </div>
+            );
+          })
+        ) : (
+          <p className="none"></p>
+        )}
+      </div>
 
       <div className="carousel-inner relative w-full overflow-hidden">
         <div className="carousel-item carouselImg active float-left w-full">

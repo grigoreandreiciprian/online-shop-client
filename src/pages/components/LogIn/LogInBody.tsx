@@ -1,55 +1,67 @@
 import React from 'react'
 
+import draw2 from "../../../imgs/draw2.png"
+import { useNavigate } from 'react-router-dom'
+
 const LogInBody:React.FC = () => {
+
+    const navigate= useNavigate()
+
+   const  toSign = () =>{
+    navigate("/SignUp")
+   }
   return (
- 
+           
+    <div className='formContainer'>
 
-<div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
-    <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden">
-        <div className="md:flex w-full">
-            <div className="logImg">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" alt='pic' ></img>
+        <div className='formBox'>
+     <div className="logImg">
+        <img src={draw2} alt='pic' ></img>
 
-            </div>
-            <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
-                <div className="text-center mb-10">
-                    <h1 className="font-bold text-3xl text-gray-900">Log In</h1>
-                    <p>Enter your information to log in</p>
-                </div>
-                <div>
-                  
-                    <div className="flex -mx-3">
-                        <div className="w-full px-3 mb-5">
-                            <label  className="text-xs font-semibold px-1">Email</label>
-                            <div className="flex">
-                                <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                <input type="email" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@example.com"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex -mx-3">
-                        <div className="w-full px-3 mb-12">
-                            <label  className="text-xs font-semibold px-1">Password</label>
-                            <div className="flex">
-                                <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i className="mdi mdi-lock-outline text-gray-400 text-lg"></i></div>
-                                <input type="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex -mx-3">
-                        <div className="w-full px-3 mb-5">
-                            <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">Log</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+     </div> 
+
+        
+        
+				<form>
+					<div>
+						<span className="text-sm text-gray-900">Welcome back</span>
+						<h1 className="text-2xl font-bold">Login to your account</h1>
+					</div>
+					<div className="mt-5">
+						<label className="block text-md mb-2">Password</label>
+						<input className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="password" name="password" placeholder="password"></input>
         </div>
+						<div className="my-3">
+							<label className="block text-md mb-2" >Email</label>
+							<input className="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="email" name="password" placeholder="email"></input>
+        </div>
+							<div className="flex justify-between">
+								<div>
+									<input className="cursor-pointer"  type="checkbox" name="rememberme"></input>
+									<span className="text-sm ml-1">Remember Me</span>
+								</div>
+								<span className="text-sm text-blue-700 hover:underline cursor-pointer">Forgot password?</span>
+							</div>
+							<div className="">
+								<button className="mt-4 mb-3 w-full bg-green-500 hover:bg-green-400 text-white py-2 rounded-md transition duration-100">Login now</button>
+								<div className="flex  space-x-2 justify-center items-end bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-md transition duration-100">
+
+            <img className=" h-5 cursor-pointer" src="https://i.imgur.com/arC60SB.png"></img>
+									<button >Or sign-in with google</button>
+								</div>
+							</div>
+				</form>
+				<p className="mt-8"> Dont have an account? <span className="cursor-pointer text-sm text-blue-600" onClick={toSign}> Join free today</span></p>
+
+        </div>
+
     </div>
-</div>
+   
 
-
+				
 )
 }
+
 
 export default LogInBody
 
