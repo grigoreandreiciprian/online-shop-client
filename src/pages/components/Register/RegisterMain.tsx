@@ -163,7 +163,6 @@ const RegisterMain:React.FC = () => {
         }
 
 
-
     const createAccount = async () =>{
 
         check()
