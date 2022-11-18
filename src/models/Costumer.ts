@@ -8,7 +8,7 @@ export default interface Costumer {
     streetAdress: string
     province: string
     city: string
-    postalCode: number
+    postalCode: string
     country: string
     phone: string
 }

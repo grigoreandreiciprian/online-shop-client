@@ -5,14 +5,20 @@ import "../src/dist/output.css"
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
+import AlertProvider from './Context/Alert';
+import LogIn from './pages/LogIn';
 
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Home />}></Route>
-      <Route path='/signUp' element={<Register />}></Route>
-    </Routes>
+    <AlertProvider>
+        <Routes>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='/signUp' element={<Register />}></Route>
+            <Route path='/LogIn' element ={<LogIn />}></Route>
+        </Routes>
+
+    </AlertProvider>
     </BrowserRouter>
   );
 }

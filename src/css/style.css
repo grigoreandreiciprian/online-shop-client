@@ -533,6 +533,8 @@ template {
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
+  display: grid;
+  position: relative;
 }
 .registerContainer .registerBox {
   width: 100%;
@@ -606,6 +608,24 @@ template {
   width: 45%;
   margin: 0.5rem;
 }
+.registerContainer .alerts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 50%;
+  min-width: 484px;
+  margin: auto;
+  right: 0.5rem;
+  animation: alert linear 0.7s 1;
+}
+.registerContainer .alertMsg {
+  margin: 0.25rem 0px;
+  width: 100%;
+}
+.registerContainer .none {
+  display: none;
+}
 
 @media (min-width: 640px) {
   .registerContainer .registerBox {
@@ -615,6 +635,105 @@ template {
 @media (min-width: 768px) {
   .registerContainer .registerBox {
     max-width: 500px;
+  }
+}
+@media (min-width: 1000px) {
+  .registerContainer .alerts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 20%;
+    position: absolute;
+    top: 15%;
+    right: 0.5rem;
+    animation: alert linear 0.7s 1;
+  }
+  .registerContainer .alertMsg {
+    margin: 0.25rem 0px;
+    width: 100%;
+  }
+}
+@keyframes alert {
+  0% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+.logInContainer {
+  height: 100vh;
+  background-color: royalblue;
+}
+.logInContainer .logInBox {
+  width: 100%;
+  padding: 3rem 1.5rem;
+  height: 100%;
+}
+.logInContainer .logImg {
+  padding-bottom: 3rem;
+  max-width: 400px;
+}
+.logInContainer .log img {
+  max-width: 400px;
+}
+.logInContainer .logInput {
+  display: block;
+  width: 100%;
+  padding: 0px 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  color: black;
+  background-color: white;
+}
+.logInContainer .logInput:focus {
+  border: 2px solid blue;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+  .logInContainer .logInBox {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .logInContainer .logInBox {
+    max-width: 768px;
+  }
+  .logInContainer .logImg {
+    width: 66%;
+    margin-bottom: 0px;
+  }
+  .logInContainer .logFormBox {
+    width: 66%;
+  }
+}
+@media (min-width: 1024px) {
+  .logInContainer .logInBox {
+    max-width: 1024px;
+  }
+  .logInContainer .logImg {
+    width: 50%;
+    margin-bottom: 3rem;
+  }
+  .logInContainer .logFormBox {
+    margin-left: 5rem;
+    width: 40%;
+  }
+}
+@media (min-width: 1280px) {
+  .logInContainer .logInBox {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .logInContainer .logInBox {
+    max-width: 1536px;
   }
 }
 
