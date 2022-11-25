@@ -16,8 +16,18 @@ export const logIn = async (
 
   const response = await api.logInn(user);
 
-  distpatch({
-    type: ActionType.LOG_IN_SUCCESS,
-    payload: response.data as LogToken,
-  });
+  if (response.id != undefined) {
+    distpatch({
+      type: ActionType.LOG_IN_SUCCESS,
+      payload: {
+        id: response.id,
+        token: response.token,
+      },
+    });
+  } else {
+    distpatch({
+      type: ActionType.LOG_IN_FAIL,
+      payload: "Email or password are incorect",
+    });
+  }
 };
