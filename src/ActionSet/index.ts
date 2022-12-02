@@ -29,7 +29,7 @@ interface LogOutRequest {
 interface LogOutSuccess {
 
     type: ActionType.LOG_OUT_SUCCESS
-    payload: ""
+    // payload: ""
 }
 
 
