@@ -16,7 +16,7 @@ export const logIn = async (
 
   const response = await api.logInn(user);
 
-  if (response.id != undefined) {
+  if (response.id !== undefined) {
     distpatch({
       type: ActionType.LOG_IN_SUCCESS,
       payload: {
@@ -30,4 +30,13 @@ export const logIn = async (
       payload: "Email or password are incorect",
     });
   }
+};
+
+export const logOut = async (distpatch: Dispatch<Action>) => {
+  distpatch({ type: ActionType.LOG_OUT_REQUEST });
+
+  distpatch({
+    type: ActionType.LOG_OUT_SUCCESS,
+    payload: "",
+  });
 };
