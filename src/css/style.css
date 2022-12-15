@@ -403,6 +403,21 @@ template {
     line-height: 2rem;
   }
 
+  .logOut {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .logOut p {
+    margin: 1rem;
+  }
+
+  .logOut p:hover {
+    color: red;
+    cursor: pointer;
+  }
+
   .nav li {
     padding: 0px 1.5rem;
     margin: 0px auto;
@@ -712,6 +727,7 @@ template {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .formContainer .formBox {
   background-color: white;
@@ -732,6 +748,22 @@ template {
   width: 100%;
   height: 100%;
 }
+.formContainer .alerts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 50%;
+  min-width: 484px;
+  margin: auto;
+  right: 0.5rem;
+  animation: alert linear 0.7s 1;
+}
+.formContainer .alertMsg {
+  margin: 0.25rem 0px;
+  width: 100%;
+  color: red;
+}
 
 @media (min-width: 720px) {
   .formContainer {
@@ -743,6 +775,140 @@ template {
     width: 100%;
     max-width: 1000px;
     padding: 100px 2.5rem;
+  }
+}
+@media (min-width: 1000px) {
+  .formContainer .alerts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 20%;
+    position: absolute;
+    top: 15%;
+    right: 0.5rem;
+    animation: alert linear 0.7s 1;
+  }
+  .formContainer .alertMsg {
+    margin: 0.25rem 0px;
+    width: 80%;
+  }
+}
+.detailsContainer {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  flex-direction: row;
+}
+.detailsContainer .detailsImg {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-color: gray;
+}
+
+@media (min-width: 1050px) {
+  .detailsContainer {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .detailsImg {
+    width: 50%;
+    max-width: 500px;
+  }
+}
+.cartContainer {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5rem;
+}
+.cartContainer .orderDetailsBox {
+  width: 100%;
+  padding: 2.5rem;
+}
+.cartContainer .orderTitle {
+  padding-bottom: 2rem;
+  border-bottom-width: 1px;
+  display: flex;
+  justify-content: space-between;
+}
+.cartContainer .orderColumns {
+  display: flex;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  color: #4b5563;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+}
+.cartContainer .longH3 {
+  width: 40%;
+}
+.cartContainer .smallH3 {
+  width: 20%;
+}
+.cartContainer .continue {
+  display: none;
+}
+.cartContainer .summary {
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .cartContainer {
+    max-width: 640px;
+  }
+  .cartContainer .continue {
+    display: flex;
+    font-weight: 600;
+    color: royalblue;
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 2.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .cartContainer {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .cartContainer {
+    max-width: 1024px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .cartContainer .orderDetailsBox {
+    min-width: 800px;
+  }
+  .cartContainer .summary {
+    width: 25%;
+  }
+}
+@media (min-width: 1280px) {
+  .cartContainer {
+    max-width: 1280px;
+    width: 100%;
+  }
+}
+@media (min-width: 1536px) {
+  .cartContainer {
+    max-width: 1536px;
+    width: 100%;
   }
 }
 

@@ -3,6 +3,7 @@
 }
 
 
+
 @media (min-width:1000px){
     .nav{
         display:flex;
@@ -15,6 +16,22 @@
         font-weight: 600;
         font-size: 1.5rem;
         line-height: 2rem;
+    }
+
+
+    .logOut {
+        font-size: 20px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logOut p{
+        margin: 1rem;
+    }
+
+    .logOut p:hover{
+        color: red;
+        cursor: pointer;
     }
 
     .nav li{

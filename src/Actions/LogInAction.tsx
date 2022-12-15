@@ -1,7 +1,7 @@
 import Data from "../Api";
 import Costumer from "../models/Costumer";
 import { ActionType } from "../ActionTypes/ActionTtype";
-import { Action } from "../ActionSet/index";
+import { Action } from "../ActionSet/login/index";
 import { Dispatch } from "redux";
 import LogCredentials from "../models/LogCredentials";
 import LogToken from "../models/Token";

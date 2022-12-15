@@ -1,6 +1,6 @@
 
-import { ActionType } from "../ActionTypes/ActionTtype";
-import LogToken from "../models/Token";
+import { ActionType } from "../../ActionTypes/ActionTtype";
+import LogToken from "../../models/Token";
 
 
 interface LogInRequest {
@@ -38,6 +38,9 @@ interface LogOutFail {
     type: ActionType.LOG_OUT_FAIL
     payload: ""
 }
+
+
+
 
 
 export type Action = LogInRequest | LogInSuccess | LogInFail | LogOutRequest | LogOutSuccess | LogOutFail

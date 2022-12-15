@@ -1,49 +1,44 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import PictureData from "../../../models/PictureData"
+import PictureData from "../../../models/PictureData";
 
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { AddCart } from "../../../Actions/CartAction";
 
 interface ProductList {
-
-  product:{
-
-          id?: number | null;
-          name: String;
-          price: Number;
-          weight: Number;
-          category: String;
-          create_date: String;
-          stock: number;
-          picture: PictureData
-        }
+  product: {
+    id?: number | null;
+    name: String;
+    price: Number;
+    weight: Number;
+    category: String;
+    create_date: String;
+    stock: number;
+    picture: PictureData;
+  };
 }
 
+const ProductCard: React.FC<ProductList> = ({ product }: ProductList) => {
+  const [picture, setPicture] = useState("");
+  const dispatch = useDispatch();
 
-
-const ProductCard:React.FC<ProductList> = ({product}:ProductList) => {
-
-  const [picture,setPicture] = useState("")
-
-
-  function toBase64(arr:[]  ) {
+  function toBase64(arr: []) {
     return btoa(
       arr.reduce((data, byte) => data + String.fromCharCode(byte), "")
     );
   }
 
+  const addProd = () => {
+    AddCart(product, dispatch);
+  };
+
   useEffect(() => {
-    if (product.picture != null ) {
+    if (product.picture != null) {
       setPicture(`data:image/png;base64,${toBase64(product.picture.data)}`);
     }
   }, [product]);
 
-
-
-
-  
   return (
     <>
       <div className="productCard">
@@ -56,13 +51,14 @@ const ProductCard:React.FC<ProductList> = ({product}:ProductList) => {
             ></img>
           </a>
           <div className="px-5 pb-5">
-          
-              <h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">
-                {product.name}
-              </h3>
+            <h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">
+              {product.name}
+            </h3>
 
-              <h3 className="text-gray-900 font-semibold text-m tracking-tight dark:text-white">{product.category}</h3>
-            
+            <h3 className="text-gray-900 font-semibold text-m tracking-tight dark:text-white">
+              {product.category}
+            </h3>
+
             <div className="flex items-center mt-2.5 mb-5">
               <svg
                 className="w-5 h-5 text-yellow-300"
@@ -110,11 +106,11 @@ const ProductCard:React.FC<ProductList> = ({product}:ProductList) => {
             </div>
             <div className="flex items-center justify-between">
               <p className="text-3xl font-bold text-gray-900 dark:text-white">
-                {"$"+product.price}
+                {"$" + product.price}
               </p>
               <a
-                href="#"
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                onClick={addProd}
               >
                 Add to cart
               </a>
