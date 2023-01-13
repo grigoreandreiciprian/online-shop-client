@@ -1,0 +1,33 @@
+.detailsContainer{
+
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    flex-direction: row;
+
+
+    .detailsImg{
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: .25rem;
+        border-width: 1px;
+        border-color: gray;
+    }
+}
+
+
+@media(min-width:1050px){
+
+    .detailsContainer{
+
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+   .detailsImg{
+        width: 50%;
+        max-width: 500px;
+    }
+}
