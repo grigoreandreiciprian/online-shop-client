@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
-import OrderDetails from "./OrderDetails";
+import OrderDetails from "./OrderMain";
 import Sumary from "./Sumary";
 
 const CartBody = () => {
@@ -13,8 +13,6 @@ const CartBody = () => {
   return (
     <div className="cartContainer">
       <OrderDetails />
-
-      <Sumary />
     </div>
   );
 };

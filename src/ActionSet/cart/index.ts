@@ -21,5 +21,19 @@ interface RemoveCartItem {
 
 }
 
+interface IncreaseQuantity {
+    type: ActionType.CART_INCREASE_QUANTITY
+    payload: number
+}
 
-export type Action = AddCartRequest | AddCartSucces | RemoveCartItem
+interface DecreaseQuantity {
+    type: ActionType.CART_DECREASE_QUANTITY
+    payload: number
+}
+
+interface CartReset {
+    type: ActionType.CART_RESET
+}
+
+
+export type Action = AddCartRequest | AddCartSucces | RemoveCartItem | IncreaseQuantity | DecreaseQuantity | CartReset

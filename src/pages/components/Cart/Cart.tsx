@@ -1,5 +1,5 @@
 import React from "react";
-import CartMain from "./components/Cart/CartMain";
+import CartMain from "./CartMain";
 
 const Cart: React.FC = () => {
   return <CartMain />;

@@ -14,6 +14,9 @@ export const cartReducer = (state = { cartItems: [] }, action: Action) => {
         (e: OrderDetails) => e.id === item.id
       );
 
+      let items = [...state.cartItems, item];
+      localStorage.setItem("items", JSON.stringify(items));
+
       if (existItem) {
         let items = [...state.cartItems];
 
@@ -23,8 +26,7 @@ export const cartReducer = (state = { cartItems: [] }, action: Action) => {
           }
         });
 
-        // console.log(items);
-
+        localStorage.setItem("items", JSON.stringify(items));
         return {
           ...state,
           cartItems: items,
@@ -46,6 +48,54 @@ export const cartReducer = (state = { cartItems: [] }, action: Action) => {
         ),
       };
 
+    case ActionType.CART_INCREASE_QUANTITY:
+      const id = action.payload;
+
+      const prod = state.cartItems.find((e: OrderDetails) => e.id === id);
+
+      if (prod) {
+        let items = [...state.cartItems];
+
+        items.forEach((e) => {
+          if ((e as OrderDetails).id === (prod as OrderDetails).id) {
+            (e as OrderDetails).quantity += 1;
+          }
+        });
+      }
+
+      return {
+        ...state,
+        loading: false,
+      };
+
+    case ActionType.CART_DECREASE_QUANTITY:
+      const prodId = action.payload;
+
+      const product = state.cartItems.find(
+        (e: OrderDetails) => e.id === prodId
+      );
+
+      if (product) {
+        let items = [...state.cartItems];
+
+        items.forEach((e) => {
+          if ((e as OrderDetails).id === (product as OrderDetails).id) {
+            if ((e as OrderDetails).quantity > 0)
+              (e as OrderDetails).quantity -= 1;
+          }
+        });
+      }
+
+      return {
+        ...state,
+        loading: false,
+      };
+
+    case ActionType.CART_RESET:
+      return {
+        cartItems: [],
+        loading: false,
+      };
     default:
       return state;
   }

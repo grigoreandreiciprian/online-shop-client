@@ -6,6 +6,7 @@ import logoBlack from "../../../imgs/logo-black.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../Actions/LogInAction";
 import { useCookies } from "react-cookie";
+import { reset } from "../../../Actions/CartAction";
 
 const JSNavbar = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const JSNavbar = () => {
   const Out = () => {
     setCookie("authentificatedUser", "");
     logOut(dispatch);
+    reset(dispatch);
     navigate("/LogIn");
   };
 
@@ -65,7 +67,12 @@ const JSNavbar = () => {
               if (user) {
                 return (
                   <div className="hidden xl:flex items-center space-x-5 items-center">
-                    <a className="hover:text-red-600" href="#">
+                    <a
+                      className="hover:text-red-600"
+                      onClick={() => {
+                        navigate("/favorite");
+                      }}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -107,7 +114,9 @@ const JSNavbar = () => {
                     {/* <!-- Sign In / Register      --> */}
                     <a
                       className="flex items-center hover:text-red-500"
-                      href="#"
+                      onClick={() => {
+                        navigate("/accSetings");
+                      }}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

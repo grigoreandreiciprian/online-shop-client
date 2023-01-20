@@ -1,16 +1,16 @@
 import React from "react";
 import FooterMain from "../Footer/FooterMain";
 import JSNavbar from "../Header/JSNavbar";
-import OrderMain from "./OrderMain";
+import ProductDetailsMain from "./ProductDetailsMain";
 
-const CartMain = () => {
+const Details: React.FC = () => {
   return (
     <>
       <JSNavbar />
-      <OrderMain />
+      <ProductDetailsMain />
       <FooterMain />
     </>
   );
 };
 
-export default CartMain;
+export default Details;

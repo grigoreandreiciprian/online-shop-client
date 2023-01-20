@@ -35,11 +35,12 @@ const Carousel = () => {
 
       <div className="alerts">
         {alert.length > 0 ? (
-          alert.map((e) => {
+          alert.map((e, i) => {
             return (
               <div
                 className="alertMsg bg-green-100 border border-red-400 text-green-700 px-4 py-3 rounded relative w-[20%]"
                 role="alert"
+                key={i}
               >
                 <span className="block sm:inline">{e}</span>
                 <span

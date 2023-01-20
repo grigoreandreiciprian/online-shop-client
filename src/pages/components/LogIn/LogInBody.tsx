@@ -9,6 +9,7 @@ interface props {
   logIn: () => void;
 
   err: Array<String>;
+  // key: number;
 }
 
 const LogInBody: React.FC<props> = ({ handleChanger, logIn, err }: props) => {
@@ -84,11 +85,12 @@ const LogInBody: React.FC<props> = ({ handleChanger, logIn, err }: props) => {
             </div>
 
             {err.length > 0 ? (
-              err.map((e) => {
+              err.map((e, i) => {
                 return (
                   <div
                     className="alertMsg px-4 py-3 rounded relative w-[20%]"
                     role="alert"
+                    key={i}
                   >
                     <span className="block sm:inline">{e}</span>
                     <span className="absolute top-0 bottom-0 right-0 px-4 py-3"></span>

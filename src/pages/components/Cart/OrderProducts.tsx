@@ -3,9 +3,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Product from "../../../models/Product";
+import OrderDetails from "../../../models/OrderDetails";
+import { useNavigate } from "react-router-dom";
 
 import PictureData from "../../../models/PictureData";
-import { removeFromCart } from "../../../Actions/CartAction";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from "../../../Actions/CartAction";
+import { getProd } from "../../../Actions/GetProductAction";
 
 interface details {
   detail: {
@@ -13,42 +20,47 @@ interface details {
     price: number;
     quantity: number;
   };
+
+  handleChanger: (quantity: number) => void;
 }
-const OrderProducts: React.FC<details> = ({ detail }: details) => {
+const OrderProducts: React.FC<details> = ({
+  detail,
+  handleChanger,
+}: details) => {
   const distpach = useDispatch();
   const [picture, setPicture] = useState("");
   const [total, setTotal] = useState(detail.price);
   const [quantity, setQuantity] = useState(detail.quantity);
   const [product, setProduct] = useState(Object);
+  const [totalSum, setTotalSum] = useState(Number);
 
   //@ts-ignore
   const products = useSelector((state) => state.products.products);
 
   //@ts-ignore
-  const loading = useSelector((state) => state.cart.loading);
+  const loading = useSelector((state) => state.products.loading);
 
   const totalPrice = () => {
     setTotal(detail.price * quantity);
   };
 
-  const increaseQuantity = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-  };
-
-  const decreaseQuantity = () => {
-    if (quantity > 0) {
-      const newQuantity = quantity - 1;
-      setQuantity(newQuantity);
+  const totalCost = () => {
+    let total: number = 0;
+    if (products) {
+      products.forEach((e: OrderDetails) => {
+        total += e.price * e.quantity;
+      });
     }
+
+    setTotalSum(total);
   };
 
   const findProduct = () => {
-    const prod = products.filter((e: Product) => e.id == detail.id)[0];
+    if (products) {
+      const prod = products.filter((e: Product) => e.id === detail.id)[0];
 
-    setProduct(prod);
-
-    console.log(product);
+      setProduct(prod);
+    }
   };
 
   function toBase64(arr: []) {
@@ -66,16 +78,30 @@ const OrderProducts: React.FC<details> = ({ detail }: details) => {
   useEffect(() => {
     if (loading == false) {
       findProduct();
-      console.log("cve");
     }
-  }, [product]);
+  }, [loading]);
 
   useEffect(() => {
+    handleChanger(quantity);
     totalPrice();
+    totalCost();
   }, [quantity]);
 
   const remove = () => {
     removeFromCart(product.id, distpach);
+  };
+
+  const increase = () => {
+    increaseQuantity(product.id, distpach);
+    setQuantity(quantity + 1);
+  };
+
+  const decrease = () => {
+    decreaseQuantity(product.id, distpach);
+
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
   };
   return (
     <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
@@ -98,7 +124,7 @@ const OrderProducts: React.FC<details> = ({ detail }: details) => {
         <svg
           className="fill-current text-gray-600 w-3"
           viewBox="0 0 448 512"
-          onClick={decreaseQuantity}
+          onClick={decrease}
         >
           <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
         </svg>
@@ -108,7 +134,7 @@ const OrderProducts: React.FC<details> = ({ detail }: details) => {
         <svg
           className="fill-current text-gray-600 w-3"
           viewBox="0 0 448 512"
-          onClick={increaseQuantity}
+          onClick={increase}
         >
           <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
         </svg>

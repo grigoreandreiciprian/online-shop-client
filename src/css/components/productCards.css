@@ -4,10 +4,14 @@
   grid-gap: 40px;
   width: 80%;
   margin: auto;
+  position: relative;
 }
 .productCards .productCard {
   max-width: 45rem;
   margin: 0px auto;
+}
+.productCards .cardBtn:hover {
+  cursor: pointer;
 }
 
 @media (min-width: 720px) {

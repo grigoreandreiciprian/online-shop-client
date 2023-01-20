@@ -35,6 +35,9 @@ export const logIn = async (
 export const logOut = async (distpatch: Dispatch<Action>) => {
   distpatch({ type: ActionType.LOG_OUT_REQUEST });
 
+  localStorage.removeItem("items");
+  localStorage.removeItem("token");
+
   distpatch({
     type: ActionType.LOG_OUT_SUCCESS,
     payload: "",

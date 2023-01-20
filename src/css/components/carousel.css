@@ -111,6 +111,7 @@
   .carousel .alertMsg {
     margin: 0.25rem 0px;
     width: 100%;
+    position: sticky;
   }
 }
 @keyframes alert {

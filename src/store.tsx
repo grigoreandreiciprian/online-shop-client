@@ -22,13 +22,19 @@ const initialState = {
   },
 
   cart: {
-    cartItems: [],
+    //@ts-ignore
+    cartItems: JSON.parse(localStorage.getItem("items"))
+      ? //@ts-ignore
+        JSON.parse(localStorage.getItem("items"))
+      : [],
   },
 
   products: {
     productsList: "",
   },
 };
+
+export default initialState;
 
 export const store = createStore(
   reducer,

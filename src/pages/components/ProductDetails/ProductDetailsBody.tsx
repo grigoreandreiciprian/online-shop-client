@@ -1,30 +1,116 @@
 import React from "react";
+import Product from "../../../models/Product";
+import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
+import Data from "../../../Api";
+import Costumer from "../../../models/Costumer";
+import Favorite from "../../../models/Favorite";
+import { AddCart } from "../../../Actions/CartAction";
+import { useDispatch } from "react-redux";
 
-const ProductDetailsBody: React.FC = () => {
+interface product {
+  product: Product;
+}
+
+const ProductDetailsBody: React.FC<product> = ({ product }: product) => {
+  const [picture, setPicture] = useState("");
+  const distpach = useDispatch();
+  const [cookies, setCookie] = useCookies(["authentificatedUser"]);
+  const [user, setUser] = useState(Object);
+  const api = new Data();
+  const [prodId, setProdId] = useState(Number);
+  const [isFav, setIsFav] = useState(Boolean);
+
+  const findUser = async () => {
+    const users = await api.getUsers();
+
+    //@ts-ignore
+    const user = users.filter(
+      (e: Costumer) => e.id === cookies.authentificatedUser.id
+    )[0];
+
+    setUser(user);
+  };
+
+  function toBase64(arr: []) {
+    return btoa(
+      arr.reduce((data, byte) => data + String.fromCharCode(byte), "")
+    );
+  }
+
+  const addToFavorites = async () => {
+    const favorites = await api.getFavorites();
+
+    //@ts-ignore
+    const item = favorites.filter((e: Favorite) => e.productId === prodId);
+    //@ts-ignore
+    const isFav = favorites.filter(
+      (e: Favorite) => e.costumerId === user.id
+    )[0];
+
+    if (item.length === 0) {
+      await api.addFavorite({ productId: prodId, costumerId: user.id });
+    } else {
+      await api.deleteFavorite(isFav.id);
+      console.log("Product already in favorite");
+    }
+  };
+
+  const favoriteItem = async () => {
+    const favorites = await api.getFavorites();
+
+    //@ts-ignore
+    const isFavorite = favorites.filter(
+      (e: Favorite) => e.costumerId === user.id
+    );
+
+    if (isFavorite.length !== 0) {
+      setIsFav(true);
+    } else {
+      setIsFav(false);
+    }
+  };
+
+  const addToCart = () => {
+    AddCart(product, distpach);
+  };
+
+  useEffect(() => {
+    favoriteItem();
+  }, [user]);
+
+  useEffect(() => {
+    if (product.picture != null) {
+      setPicture(`data:image/png;base64,${toBase64(product.picture.data)}`);
+    }
+  }, [product]);
+
+  useEffect(() => {
+    findUser();
+    //@ts-ignore
+    setProdId(product.id);
+  }, []);
+
   return (
     <section className="text-gray-700 body-font overflow-hidden bg-white">
       <div className="container px-5 py-24 mx-auto">
         <div className="detailsContainer">
-          <img
-            alt="ecommerce"
-            className="detailsImg"
-            src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"
-          ></img>
+          <img alt="ecommerce" className="detailsImg" src={picture}></img>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
-              BRAND NAME
+              PRODUCT NAME
             </h2>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-              The Catcher in the Rye
+              {product.name}
             </h1>
             <div className="flex mb-4">
               <span className="flex items-center">
                 <svg
                   fill="currentColor"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-4 h-4 text-red-500"
                   viewBox="0 0 24 24"
                 >
@@ -33,9 +119,9 @@ const ProductDetailsBody: React.FC = () => {
                 <svg
                   fill="currentColor"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-4 h-4 text-red-500"
                   viewBox="0 0 24 24"
                 >
@@ -44,9 +130,9 @@ const ProductDetailsBody: React.FC = () => {
                 <svg
                   fill="currentColor"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-4 h-4 text-red-500"
                   viewBox="0 0 24 24"
                 >
@@ -55,9 +141,9 @@ const ProductDetailsBody: React.FC = () => {
                 <svg
                   fill="currentColor"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-4 h-4 text-red-500"
                   viewBox="0 0 24 24"
                 >
@@ -66,9 +152,9 @@ const ProductDetailsBody: React.FC = () => {
                 <svg
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   className="w-4 h-4 text-red-500"
                   viewBox="0 0 24 24"
                 >
@@ -80,9 +166,9 @@ const ProductDetailsBody: React.FC = () => {
                 <a className="text-gray-500">
                   <svg
                     fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
                   >
@@ -92,9 +178,9 @@ const ProductDetailsBody: React.FC = () => {
                 <a className="ml-2 text-gray-500">
                   <svg
                     fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
                   >
@@ -104,9 +190,9 @@ const ProductDetailsBody: React.FC = () => {
                 <a className="ml-2 text-gray-500">
                   <svg
                     fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
                   >
@@ -143,9 +229,9 @@ const ProductDetailsBody: React.FC = () => {
                     <svg
                       fill="none"
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       className="w-4 h-4"
                       viewBox="0 0 24 24"
                     >
@@ -156,24 +242,64 @@ const ProductDetailsBody: React.FC = () => {
               </div>
             </div>
             <div className="flex">
-              <span className="title-font font-medium text-2xl text-gray-900">
-                $58.00
-              </span>
-              <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                Button
+              {
+                //@ts-ignore
+                <h2 className="title-font font-medium text-2xl text-gray-900">
+                  $ {product.price}
+                </h2>
+              }
+              <button
+                className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                onClick={addToCart}
+              >
+                Add to cart
               </button>
-              <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                <svg
-                  fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                </svg>
-              </button>
+
+              {(() => {
+                if (isFav === true) {
+                  return (
+                    <button
+                      className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-red-500 ml-4"
+                      onClick={() => {
+                        addToFavorites();
+                        favoriteItem();
+                      }}
+                    >
+                      <svg
+                        fill="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        className="w-5 h-5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                      </svg>
+                    </button>
+                  );
+                } else {
+                  return (
+                    <button
+                      className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"
+                      onClick={() => {
+                        favoriteItem();
+                        addToFavorites();
+                      }}
+                    >
+                      <svg
+                        fill="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        className="w-5 h-5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                      </svg>
+                    </button>
+                  );
+                }
+              })()}
             </div>
           </div>
         </div>

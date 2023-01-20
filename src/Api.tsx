@@ -1,6 +1,9 @@
-import { Token } from "typescript";
+import AccountUpdate from "./models/AccountUpdate";
+import { CartItems } from "./models/Cart";
 import Costumer from "./models/Costumer";
+import Favorite from "./models/Favorite";
 import LogCredentials from "./models/LogCredentials";
+import OrderDetails from "./models/OrderDetails";
 import Product from "./models/Product";
 import ResponseImpl from "./models/Response";
 import LogToken from "./models/Token";
@@ -18,16 +21,30 @@ export default class Data {
       method,
       headers: {
         "Content-Type": "application/json;charset=utf-8",
-        Authentification: `Bearer${token}`,
+        authorization: `Bearer ${token}`,
       },
 
       body: body == null ? null : JSON.stringify(body),
     };
+
     return fetch(url, options);
   }
 
   getProducts = async (): Promise<ResponseImpl<Product[]>> => {
-    const response = await this.api("/products", "GET", null, "");
+    let token = JSON.parse(localStorage.getItem("token")!.toString());
+
+    const response = await this.api("/products", "GET", null, token);
+
+    return response.json();
+  };
+
+  paginateProducts = async (limit: number, page: number) => {
+    const response = await this.api(
+      `/products/paginate/?limit=${limit}&page=${page}`,
+      "GET",
+      null,
+      ""
+    );
 
     return response.json();
   };
@@ -40,7 +57,11 @@ export default class Data {
 
   createAcc = async (user: Costumer) => {
     const response = await this.api("/users", "POST", user, "");
+    return response;
+  };
 
+  updateUser = async (user: AccountUpdate) => {
+    const response = await this.api(`/users/${user.id}`, "PUT", user, "");
     return response;
   };
 
@@ -53,5 +74,30 @@ export default class Data {
     );
 
     return response.json();
+  };
+
+  sendCart = async (cart: CartItems) => {
+    let token = JSON.parse(localStorage.getItem("token")!.toString());
+    const response = await this.api("/orders", "POST", cart, token);
+
+    return response;
+  };
+
+  getFavorites = async (): Promise<ResponseImpl<Favorite[]>> => {
+    const response = await this.api("/favorite", "GET", null, "");
+
+    return response.json();
+  };
+
+  addFavorite = async (item: Favorite) => {
+    const response = await this.api("/favorite", "POST", item, "");
+
+    return response;
+  };
+
+  deleteFavorite = async (id: number) => {
+    const response = await this.api(`/favorite/${id}`, "DELETE", null, "");
+
+    return response;
   };
 }

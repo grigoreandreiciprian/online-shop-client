@@ -1,3 +1,5 @@
+
+
 .productCards{
 
    display: grid;
@@ -5,12 +7,20 @@
    grid-gap:40px;
    width: 80%;
    margin: auto;
+   position: relative;
 
    .productCard{
     max-width: 45rem;
     margin: 0px auto;
 
    }
+
+   .cardBtn:hover{
+       cursor: pointer;
+   }
+
+
+   
 }
 
 

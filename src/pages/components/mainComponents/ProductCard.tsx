@@ -1,10 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import PictureData from "../../../models/PictureData";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AddCart } from "../../../Actions/CartAction";
+import { useNavigate } from "react-router-dom";
+import { Alerts } from "../../../Context/Alert";
 
 interface ProductList {
   product: {
@@ -22,6 +24,10 @@ interface ProductList {
 const ProductCard: React.FC<ProductList> = ({ product }: ProductList) => {
   const [picture, setPicture] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const pruductId = product.id;
+
+  const { alert, setAlert } = useContext(Alerts);
 
   function toBase64(arr: []) {
     return btoa(
@@ -39,6 +45,10 @@ const ProductCard: React.FC<ProductList> = ({ product }: ProductList) => {
     }
   }, [product]);
 
+  const prodDetails = () => {
+    navigate(`details/${pruductId}`);
+  };
+
   return (
     <>
       <div className="productCard">
@@ -48,6 +58,7 @@ const ProductCard: React.FC<ProductList> = ({ product }: ProductList) => {
               className="rounded-t-lg p-8 w-[300px] h-[300px]"
               src={picture}
               alt="product image"
+              onClick={prodDetails}
             ></img>
           </a>
           <div className="px-5 pb-5">
@@ -108,12 +119,12 @@ const ProductCard: React.FC<ProductList> = ({ product }: ProductList) => {
               <p className="text-3xl font-bold text-gray-900 dark:text-white">
                 {"$" + product.price}
               </p>
-              <a
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              <button
+                className="cardBtn text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onClick={addProd}
               >
                 Add to cart
-              </a>
+              </button>
             </div>
           </div>
         </div>

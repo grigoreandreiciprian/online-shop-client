@@ -11,6 +11,9 @@ export enum ActionType {
     GET_PRODUCTS_SUCCES = 'GetProductsSucce',
     ADD_TO_CART_REQUEST = 'AdToCartRequest',
     ADD_CART_SUCCES = 'AddToCart',
-    CART_REMOVE_ITEM = "CartRemoveItem"
+    CART_REMOVE_ITEM = "CartRemoveItem",
+    CART_INCREASE_QUANTITY = "CartIncreaseQuantity",
+    CART_DECREASE_QUANTITY = "CartDecreaseQuantity",
+    CART_RESET = "StateReset"
 }
 

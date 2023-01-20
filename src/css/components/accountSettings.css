@@ -1,0 +1,23 @@
+.accountSettings {
+  background-color: #e5e7eb;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding-top: 0.5rem;
+  border: 2px solid white;
+  border-radius: 20px;
+}
+
+@media (min-width: 640px) {
+  .accountSettings {
+    width: 75%;
+    margin: 4rem auto;
+  }
+}
+@media (min-width: 1024px) {
+  .accountSettings {
+    width: 35%;
+    min-width: 700px;
+  }
+}
+
+/*# sourceMappingURL=accountSettings.css.map */

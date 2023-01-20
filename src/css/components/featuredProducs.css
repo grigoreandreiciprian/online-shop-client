@@ -1,0 +1,45 @@
+.featuredProducts {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.featuredProducts h1 {
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  font-weight: 700;
+}
+.featuredProducts .filterBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3rem;
+}
+.featuredProducts .paginationBox {
+  width: 50%;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.featuredProducts .pageNumber {
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #6366f1;
+  background-color: #eef2ff;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #4f46e5;
+  margin-right: 5px;
+}
+.featuredProducts .pageNumber:hover {
+  transform: scale(1.05);
+}
+
+/*# sourceMappingURL=featuredProducs.css.map */
