@@ -16,7 +16,7 @@ export const AddCart = async (
   const products = await data.getProducts();
 
   // @ts-ignore
-  const prod = products.filter((e) => e.id == product.id)[0];
+  const prod = products.filter((e) => e.id === product.id)[0];
 
   const details: OrderDetails = {
     id: prod.id,
@@ -34,5 +34,25 @@ export const removeFromCart = (id: number, dispatch: Dispatch<Action>) => {
   dispatch({
     type: ActionType.CART_REMOVE_ITEM,
     payload: id,
+  });
+};
+
+export const increaseQuantity = (id: number, dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.CART_INCREASE_QUANTITY,
+    payload: id,
+  });
+};
+
+export const decreaseQuantity = (id: number, dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.CART_DECREASE_QUANTITY,
+    payload: id,
+  });
+};
+
+export const reset = (dispatch: Dispatch<Action>) => {
+  dispatch({
+    type: ActionType.CART_RESET,
   });
 };
